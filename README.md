@@ -437,15 +437,11 @@ SOFTWARE.
 
 <div align="center">
 
-**🌴 Fait avec ❤️ pour La Réunion 🌴**
+**🌴 Fait pour La Réunion 🌴**
 
 [⬆ Retour en haut](#-météo-la-réunion--dashboard-temps-réel)
 
-### 🇫🇷 Gunout · 2026
 
-© 2026 **Gunout** — Tous droits réservés.
-
-</div>
 
 ---
 
