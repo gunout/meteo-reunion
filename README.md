@@ -1,12 +1,14 @@
-# 🌴 Météo La Réunion — Dashboard Temps Réel
+# 🌴 Météo La Réunion — Dashboard Temps Réel v3.0
 
-> **Dashboard météo interactif et responsive** pour les 24 communes de La Réunion, avec plus de **40 variables météorologiques**, **6 indices calculés** (chaleur, confort, risque cyclonique, risque incendie…) et une interface tricolore moderne.
+> **Dashboard météo interactif et responsive** pour les 24 communes de La Réunion, avec **prévisions 7 jours**, **données marines**, **qualité de l'air**, **6 indices calculés** (chaleur, confort, risque cyclonique, risque incendie…), **mode sombre** et **export CSV**.
 
 [![GitHub repo](https://img.shields.io/badge/GitHub-gunout%2Fmeteo--reunion-blue?logo=github)](https://github.com/gunout/meteo-reunion/)
-[![Version](https://img.shields.io/badge/version-2.0-blue)](https://github.com/gunout/meteo-reunion/)
+[![Version](https://img.shields.io/badge/version-3.0-blue)](https://github.com/gunout/meteo-reunion/)
 [![Licence](https://img.shields.io/badge/licence-MIT-red)](https://github.com/gunout/meteo-reunion/blob/main/LICENSE)
 [![Statut](https://img.shields.io/badge/statut-production-success)](https://github.com/gunout/meteo-reunion/)
 [![Responsive](https://img.shields.io/badge/responsive-mobile%20%7C%20tablette%20%7C%204K-informational)](https://github.com/gunout/meteo-reunion/)
+[![Dark Mode](https://img.shields.io/badge/dark%20mode-%E2%9C%93-black)](https://github.com/gunout/meteo-reunion/)
+[![PWA Ready](https://img.shields.io/badge/PWA-ready-purple)](https://github.com/gunout/meteo-reunion/)
 
 ---
 
@@ -26,6 +28,7 @@
 ## 📖 Table des matières
 
 - [Aperçu](#-aperçu)
+- [Nouveautés v3.0](#-nouveautés-v30)
 - [Fonctionnalités](#-fonctionnalités)
 - [Indices calculés](#-indices-calculés)
 - [Captures d'écran](#-captures-décran)
@@ -60,27 +63,56 @@ Le tout dans une **interface tricolore** aux couleurs de La Réunion et de la Fr
 
 ---
 
+## 🆕 Nouveautés v3.0
+
+- 📅 **Prévisions 7 jours** — Graphiques de tendance + détail par commune
+- 🌊 **Données marines** — Vagues, houle, température de mer (4 spots de surf)
+- 🌫️ **Qualité de l'air** — AQI européen, PM2.5, PM10, O₃, NO₂, pollen
+- 🌀 **Alertes cycloniques** — Widget avec liens officiels Météo-France Réunion
+- 🌙 **Mode sombre** — Toggle manuel + détection OS + persistance
+- 📤 **Export CSV** — Toutes les données en un clic
+- 📊 **Nouveaux onglets** — Prévisions, Environnement
+
+---
+
 ## ✨ Fonctionnalités
 
-### 📡 Données météo en temps réel
-- **40+ variables** récupérées via l'API Open-Meteo (gratuit, sans clé API)
-- **Cache intelligent** de 10 minutes pour limiter les appels réseau
+### 📡 Données météo temps réel
+- **40+ variables** via l'API Open-Meteo (gratuit, sans clé API)
+- **Cache intelligent** de 10 minutes
 - **Actualisation automatique** configurable (1 à 15 minutes)
 - **Filtrage dynamique** par zone géographique
 
+### 📅 Prévisions 7 jours
+- Graphique multi-zones (températures max moyennes)
+- Détail par commune (max, min, précipitations)
+- Mini-barres de tendance dans chaque carte commune
+
+### 🌊 Données marines
+- Hauteur et période des vagues
+- Hauteur, période et direction de la houle
+- Température de surface de la mer
+- 4 spots : Saint-Leu, Saint-Pierre, L'Étang-Salé, Le Port
+
+### 🌫️ Qualité de l'air
+- **AQI européen** (0-100+) avec code couleur
+- PM2.5, PM10, O₃, NO₂, CO
+- Pollen (graminées)
+- 8 communes principales
+
 ### 🎨 Interface moderne
 - Thème **bleu-blanc-rouge** (couleurs La Réunion / France)
-- **4 onglets** : Vue d'ensemble · Carte · Indices · Données
+- **Mode sombre** avec détection auto (`prefers-color-scheme`)
+- **6 onglets** : Vue d'ensemble · Prévisions · Carte · Indices · Environnement · Données
 - **Design responsive** avec typographie fluide (`clamp()`)
 - **Sidebar accordéon** sur mobile, fixe sur desktop
-- **Animations fluides** et effets de survol
 - **Accessibilité** : ARIA, navigation clavier, `prefers-reduced-motion`
 
 ### 🗺️ Visualisations interactives
-- **Carte Leaflet** avec marqueurs colorés selon la température
-- **Graphiques Plotly** : températures, vents, humidité, UV par zone
-- **Tableau détaillé** avec barres de progression colorées
-- **Alertes dynamiques** (canicule, vent fort, pluie, incendie, cyclone)
+- **Carte Leaflet** avec marqueurs colorés par température
+- **Graphiques Plotly** : températures, vents, humidité, UV, chaleur, confort
+- **Tableau détaillé** avec barres de progression
+- **Alertes dynamiques** (canicule, vent, pluie, incendie, cyclone)
 
 ### 📊 Statistiques en direct
 - Commune la plus chaude / fraîche / ventée / arrosée
@@ -91,15 +123,13 @@ Le tout dans une **interface tricolore** aux couleurs de La Réunion et de la Fr
 
 ## 🔥 Indices calculés
 
-Le dashboard calcule **6 indices** à partir des données brutes :
-
 | Indice | Description | Formule |
 |--------|-------------|---------|
 | 🔥 **Indice de chaleur** | Température ressentie par forte chaleur | Formule de Rothfusz (Heat Index) |
 | ❄️ **Wind Chill** | Refroidissement éolien | Formule canadienne officielle |
 | 😊 **Indice de confort** | Score 0-10 basé sur T + humidité + vent | Algorithme pondéré |
 | 🔥 **Risque incendie** | 5 niveaux (Faible → Extrême) | T + humidité + vent + pluie |
-| 🌀 **Risque cyclonique** | 5 niveaux (Aucun → Violet) | Rafales + cumul pluie (grille officielle) |
+| 🌀 **Risque cyclonique** | 5 niveaux (Aucun → Violet) | Rafales + cumul pluie (grille officielle Météo-France) |
 | ☀️ **UV effectif** | UV pondéré par la couverture nuageuse | `UV × (1 - nuages/100)` |
 
 ---
@@ -108,13 +138,21 @@ Le dashboard calcule **6 indices** à partir des données brutes :
 
 > *(Ajoutez vos propres captures dans le dossier `/screenshots` du dépôt)*
 
-| Vue d'ensemble | Carte interactive |
-|:--------------:|:-----------------:|
-| ![Vue d'ensemble](screenshots/overview.png) | ![Carte](screenshots/map.png) |
+| Vue d'ensemble | Prévisions 7 jours |
+|:--------------:|:------------------:|
+| ![Vue d'ensemble](screenshots/overview.png) | ![Prévisions](screenshots/forecast.png) |
 
-| Indices | Données détaillées |
-|:-------:|:------------------:|
-| ![Indices](screenshots/indices.png) | ![Données](screenshots/data.png) |
+| Carte interactive | Indices calculés |
+|:-----------------:|:----------------:|
+| ![Carte](screenshots/map.png) | ![Indices](screenshots/indices.png) |
+
+| Environnement (Marine + Air) | Données détaillées |
+|:----------------------------:|:------------------:|
+| ![Environnement](screenshots/environment.png) | ![Données](screenshots/data.png) |
+
+| Mode sombre |
+|:-----------:|
+| ![Dark](screenshots/dark-mode.png) |
 
 ---
 
@@ -197,8 +235,8 @@ netlify deploy --prod
 
 ### 📦 Autres options
 
-| Plateforme | Lien |
-|------------|------|
+| Plateforme | Commande |
+|------------|----------|
 | **Surge.sh** | `npx surge` |
 | **Render** | [render.com](https://render.com) |
 | **Firebase Hosting** | `firebase deploy` |
@@ -212,10 +250,12 @@ netlify deploy --prod
 
 | Onglet | Contenu |
 |--------|---------|
-| 📊 **Vue d'ensemble** | Métriques globales + cartes des 24 communes |
+| 📊 **Vue d'ensemble** | Widget cyclone + métriques + cartes des 24 communes |
+| 📅 **Prévisions 7j** | Graphique multi-zones + détail par commune |
 | 🗺️ **Carte** | Carte interactive + graphiques par zone |
-| 📈 **Indices** | Indices calculés + alertes + comparatifs |
-| 📋 **Données** | Tableau complet des 40+ variables |
+| 📈 **Indices** | 6 indices + alertes + comparatifs |
+| 🌊 **Environnement** | Données marines + qualité de l'air |
+| 📋 **Données** | Tableau complet + Export CSV + statistiques |
 
 ### Filtres
 
@@ -223,9 +263,14 @@ netlify deploy --prod
 - **Par commune** : filtrer le tableau via le sélecteur de zone
 - **Auto-refresh** : activer/désactiver + choisir la fréquence (1 à 15 min)
 
+### Boutons spéciaux
+
+- 🌙 **Mode sombre** : dans la sidebar
+- 📥 **Export CSV** : dans l'onglet Données
+
 ### Interactions
 
-- 🖱️ **Clic sur un marqueur** : affiche les détails complets
+- 🖱️ **Clic sur un marqueur** : détails complets
 - 🖱️ **Survol d'une carte commune** : effet visuel
 - 📱 **Sur mobile** : sidebar en accordéon (cliquer sur ⚙️ Configuration)
 
@@ -240,32 +285,35 @@ meteo-reunion/
 ├── LICENSE                 # Licence MIT
 └── screenshots/            # Captures d'écran (optionnel)
     ├── overview.png
+    ├── forecast.png
     ├── map.png
     ├── indices.png
-    └── data.png
+    ├── environment.png
+    ├── data.png
+    └── dark-mode.png
 ```
 
 **Architecture du code (dans `index.html`)** :
 
 ```
 ├── <head>
-│   ├── Styles CSS (variables, thème, responsive)
+│   ├── Styles CSS (variables, thème, responsive, dark mode)
 │   └── CDN (Plotly + Leaflet)
 ├── <body>
 │   ├── Loader
 │   ├── Header tricolore
-│   ├── Sidebar (configuration + filtres)
+│   ├── Sidebar (config + filtres + toggle dark)
 │   └── Contenu principal
-│       ├── Onglets
-│       ├── Onglet 1 : Vue d'ensemble
-│       ├── Onglet 2 : Carte
-│       ├── Onglet 3 : Indices
-│       └── Onglet 4 : Données
+│       ├── 6 onglets
+│       └── Vue d'ensemble + Prévisions + Carte
+│       └── Indices + Environnement + Données
 └── <script>
-    ├── Données communes + zones
-    ├── API Open-Meteo (fetch + cache)
+    ├── Données communes + zones + spots marins
+    ├── API Open-Meteo (météo + marine + air quality)
     ├── Calcul des indices
-    ├── Rendu (métriques, cartes, graphiques)
+    ├── Gestion du thème (dark/light + localStorage)
+    ├── Export CSV
+    ├── Rendu (métriques, cartes, graphiques, alertes)
     └── Événements (onglets, filtres, auto-refresh)
 ```
 
@@ -275,20 +323,43 @@ meteo-reunion/
 
 | Source | Type | Lien |
 |--------|------|------|
-| **Open-Meteo** | Météo temps réel (modèles Météo-France AROME) | [open-meteo.com](https://open-meteo.com) |
+| **Open-Meteo Forecast** | Météo temps réel + prévisions 7j | [open-meteo.com](https://open-meteo.com) |
+| **Open-Meteo Marine** | Vagues, houle, température mer | [marine-api.open-meteo.com](https://marine-api.open-meteo.com) |
+| **Open-Meteo Air Quality** | AQI, PM2.5, PM10, O₃, pollen | [air-quality-api.open-meteo.com](https://air-quality-api.open-meteo.com) |
 | **OpenStreetMap** | Fond de carte Leaflet | [openstreetmap.org](https://www.openstreetmap.org) |
-| **Météo-France Réunion** | Référence cyclonique | [meteofrance.re](https://meteofrance.re) |
+| **Météo-France Réunion** | Alertes cycloniques officielles | [meteofrance.re](https://meteofrance.re/fr/cyclone) |
 
-### Variables récupérées (extrait)
+### Variables récupérées
 
+**Météo actuelle** :
 ```javascript
 temperature_2m, relative_humidity_2m, apparent_temperature,
-dewpoint_2m, precipitation, rain, showers, cloud_cover,
-wind_speed_10m, wind_direction_10m, wind_gusts_10m,
+dewpoint_2m, precipitation, cloud_cover,
+wind_speed_10m, wind_gusts_10m, wind_direction_10m,
 pressure_msl, surface_pressure, uv_index,
 wet_bulb_temperature_2m, vapour_pressure_deficit,
-cape, convective_inhibition, freezing_level_height,
-visibility, weather_code
+cape, visibility, weather_code
+```
+
+**Prévisions 7 jours** :
+```javascript
+temperature_2m_max, temperature_2m_min,
+precipitation_sum, precipitation_probability_max,
+wind_speed_10m_max, wind_gusts_10m_max,
+uv_index_max, weather_code, sunrise, sunset
+```
+
+**Marine** :
+```javascript
+wave_height, wave_period, wave_direction,
+swell_wave_height, swell_wave_period,
+swell_wave_direction, sea_surface_temperature
+```
+
+**Qualité de l'air** :
+```javascript
+pm10, pm2_5, carbon_monoxide, nitrogen_dioxide,
+ozone, european_aqi, us_aqi, grass_pollen
 ```
 
 ---
@@ -329,6 +400,13 @@ Dans le `<style>`, modifiez les variables CSS :
   --rouge: #EF4135;     /* Rouge France */
   --blanc: #FFFFFF;     /* Blanc */
 }
+
+/* Mode sombre */
+html.dark-mode {
+  --bleu: #4A9EFF;
+  --rouge: #FF6B5B;
+  /* ... */
+}
 ```
 
 ### Ajouter une commune
@@ -342,6 +420,18 @@ Dans `COMMUNES_REUNION`, ajoutez :
   lon: 55.5000,
   altitude: 100,
   zone: "Nord"  // Doit exister dans ZONES
+}
+```
+
+### Ajouter un spot de surf
+
+Dans `SPOTS_MARINS`, ajoutez :
+
+```javascript
+{
+  nom: "Nouveau-Spot",
+  lat: -21.2000,
+  lon: 55.3000
 }
 ```
 
@@ -375,14 +465,14 @@ Les contributions sont les bienvenues !
 
 ### Idées d'amélioration
 
-- [ ] Prévisions à 7 jours (Open-Meteo forecast_days)
-- [ ] Données marines (hauteur vagues, température mer)
-- [ ] Qualité de l'air (PM2.5, O₃, pollen)
-- [ ] Alertes cycloniques officielles Météo-France
-- [ ] Mode sombre
-- [ ] Export PDF/CSV
-- [ ] PWA (Progressive Web App)
-- [ ] Notifications push
+- [ ] Alertes cycloniques officielles via scraping Météo-France
+- [ ] Notifications push pour les alertes
+- [ ] PWA (Progressive Web App) avec service worker
+- [ ] Export PDF avec mise en page
+- [ ] Widgets embarquables pour sites tiers
+- [ ] Historique et comparaison avec les normales saisonnières
+- [ ] Carte des précipitations radar (si disponible)
+- [ ] Intégration marées (Pointe des Galets, Piton Saint-Leu)
 
 ---
 
@@ -419,7 +509,9 @@ SOFTWARE.
 ## 🙏 Remerciements
 
 - **[Open-Meteo](https://open-meteo.com)** — API météo gratuite et open-source
-- **[Météo-France](https://meteofrance.re)** — Modèles AROME et référence cyclonique
+- **[Open-Meteo Marine](https://marine-api.open-meteo.com)** — Données marines
+- **[Open-Meteo Air Quality](https://air-quality-api.open-meteo.com)** — Qualité de l'air
+- **[Météo-France Réunion](https://meteofrance.re)** — Modèles AROME et référence cyclonique
 - **[OpenStreetMap](https://www.openstreetmap.org)** — Fond de carte libre
 - **[Plotly.js](https://plotly.com/javascript/)** — Graphiques interactifs
 - **[Leaflet](https://leafletjs.com)** — Cartes interactives légères
@@ -440,7 +532,6 @@ SOFTWARE.
 **🌴 Fait pour La Réunion 🌴**
 
 [⬆ Retour en haut](#-météo-la-réunion--dashboard-temps-réel)
-
 
 
 ---
