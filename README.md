@@ -2,10 +2,24 @@
 
 > **Dashboard météo interactif et responsive** pour les 24 communes de La Réunion, avec plus de **40 variables météorologiques**, **6 indices calculés** (chaleur, confort, risque cyclonique, risque incendie…) et une interface tricolore moderne.
 
-![Version](https://img.shields.io/badge/version-2.0-blue)
-![Licence](https://img.shields.io/badge/licence-MIT-red)
-![Statut](https://img.shields.io/badge/statut-production-success)
-![Responsive](https://img.shields.io/badge/responsive-mobile%20%7C%20tablette%20%7C%204K-informational)
+[![GitHub repo](https://img.shields.io/badge/GitHub-gunout%2Fmeteo--reunion-blue?logo=github)](https://github.com/gunout/meteo-reunion/)
+[![Version](https://img.shields.io/badge/version-2.0-blue)](https://github.com/gunout/meteo-reunion/)
+[![Licence](https://img.shields.io/badge/licence-MIT-red)](https://github.com/gunout/meteo-reunion/blob/main/LICENSE)
+[![Statut](https://img.shields.io/badge/statut-production-success)](https://github.com/gunout/meteo-reunion/)
+[![Responsive](https://img.shields.io/badge/responsive-mobile%20%7C%20tablette%20%7C%204K-informational)](https://github.com/gunout/meteo-reunion/)
+
+---
+
+## 🔗 Liens rapides
+
+| Ressource | Lien |
+|-----------|------|
+| 📦 **Dépôt GitHub** | [github.com/gunout/meteo-reunion](https://github.com/gunout/meteo-reunion/) |
+| 🌐 **Démo en ligne (GitHub Pages)** | [gunout.github.io/meteo-reunion](https://gunout.github.io/meteo-reunion/) |
+| 📄 **Code source direct** | [index.html](https://github.com/gunout/meteo-reunion/blob/main/index.html) |
+| 🐛 **Signaler un bug** | [Issues](https://github.com/gunout/meteo-reunion/issues) |
+| 💡 **Proposer une idée** | [Discussions](https://github.com/gunout/meteo-reunion/discussions) |
+| ⭐ **Mettre une étoile** | [Star le repo](https://github.com/gunout/meteo-reunion/) |
 
 ---
 
@@ -16,6 +30,7 @@
 - [Indices calculés](#-indices-calculés)
 - [Captures d'écran](#-captures-décran)
 - [Installation](#-installation)
+- [Déploiement](#-déploiement)
 - [Utilisation](#-utilisation)
 - [Structure du projet](#-structure-du-projet)
 - [Sources de données](#-sources-de-données)
@@ -40,6 +55,8 @@ Ce dashboard affiche en **temps réel** les conditions météorologiques des **2
 | ⚪ **Intérieur** | Le Tampon, Cilaos, Salazie, L'Entre-Deux |
 
 Le tout dans une **interface tricolore** aux couleurs de La Réunion et de la France, **entièrement responsive** (du mobile 320 px à l'écran 4K).
+
+👉 **Voir la démo en direct** : [gunout.github.io/meteo-reunion](https://gunout.github.io/meteo-reunion/)
 
 ---
 
@@ -89,15 +106,15 @@ Le dashboard calcule **6 indices** à partir des données brutes :
 
 ## 📸 Captures d'écran
 
-> *(Ajoutez vos propres captures dans le dossier `/screenshots`)*
+> *(Ajoutez vos propres captures dans le dossier `/screenshots` du dépôt)*
 
 | Vue d'ensemble | Carte interactive |
 |:--------------:|:-----------------:|
-| `screenshots/overview.png` | `screenshots/map.png` |
+| ![Vue d'ensemble](screenshots/overview.png) | ![Carte](screenshots/map.png) |
 
 | Indices | Données détaillées |
 |:-------:|:------------------:|
-| `screenshots/indices.png` | `screenshots/data.png` |
+| ![Indices](screenshots/indices.png) | ![Données](screenshots/data.png) |
 
 ---
 
@@ -106,21 +123,20 @@ Le dashboard calcule **6 indices** à partir des données brutes :
 ### Prérequis
 Aucun — le dashboard est **100 % client-side** (HTML + CSS + JavaScript pur).
 
-### Étapes
+### Option 1 : Cloner le dépôt
 
-1. **Télécharger** le fichier `meteo-reunion.html`
+```bash
+git clone https://github.com/gunout/meteo-reunion.git
+cd meteo-reunion
+```
 
-2. **Ouvrir** dans un navigateur moderne :
-   ```bash
-   # Depuis un terminal
-   open meteo-reunion.html    # macOS
-   start meteo-reunion.html   # Windows
-   xdg-open meteo-reunion.html # Linux
-   ```
+Puis ouvrez `index.html` dans votre navigateur.
 
-3. **Ou héberger** sur GitHub Pages, Netlify, Vercel, etc.
+### Option 2 : Télécharger directement
 
-### Hébergement local (optionnel)
+Téléchargez le fichier [index.html](https://github.com/gunout/meteo-reunion/blob/main/index.html) depuis GitHub et ouvrez-le dans un navigateur moderne.
+
+### Option 3 : Hébergement local
 
 ```bash
 # Avec Python
@@ -129,8 +145,64 @@ python -m http.server 8000
 # Avec Node.js
 npx serve
 
-# Puis ouvrir http://localhost:8000/meteo-reunion.html
+# Puis ouvrir http://localhost:8000
 ```
+
+---
+
+## 🚢 Déploiement
+
+Le projet est **100 % statique** (un seul fichier `index.html`), il peut être déployé sur n'importe quelle plateforme d'hébergement statique.
+
+### ⭐ GitHub Pages (recommandé — déjà configuré)
+
+Le déploiement est **automatique** à chaque `push` sur la branche `main`.
+
+**URL de production** : [https://gunout.github.io/meteo-reunion/](https://gunout.github.io/meteo-reunion/)
+
+Pour activer GitHub Pages manuellement :
+1. Aller dans **Settings** → **Pages** du dépôt
+2. Source : **Deploy from a branch**
+3. Branch : `main` / `/ (root)`
+4. Cliquer sur **Save**
+
+### ▲ Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/gunout/meteo-reunion)
+
+```bash
+# Via CLI
+npm i -g vercel
+vercel
+```
+
+### 🟢 Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gunout/meteo-reunion)
+
+```bash
+# Via CLI
+npm i -g netlify-cli
+netlify deploy --prod
+```
+
+### ☁️ Cloudflare Pages
+
+1. Aller sur [pages.cloudflare.com](https://pages.cloudflare.com)
+2. Connecter votre compte GitHub
+3. Sélectionner `gunout/meteo-reunion`
+4. Build command : *(laisser vide)*
+5. Output directory : `/`
+6. Cliquer sur **Save and Deploy**
+
+### 📦 Autres options
+
+| Plateforme | Lien |
+|------------|------|
+| **Surge.sh** | `npx surge` |
+| **Render** | [render.com](https://render.com) |
+| **Firebase Hosting** | `firebase deploy` |
+| **GitLab Pages** | Miroir du repo sur GitLab |
 
 ---
 
@@ -163,7 +235,7 @@ npx serve
 
 ```
 meteo-reunion/
-├── meteo-reunion.html      # Dashboard complet (fichier unique)
+├── index.html              # Dashboard complet (fichier unique)
 ├── README.md               # Ce fichier
 ├── LICENSE                 # Licence MIT
 └── screenshots/            # Captures d'écran (optionnel)
@@ -173,7 +245,7 @@ meteo-reunion/
     └── data.png
 ```
 
-**Architecture du code (dans `meteo-reunion.html`)** :
+**Architecture du code (dans `index.html`)** :
 
 ```
 ├── <head>
@@ -295,7 +367,7 @@ Alternatives : CartoDB, Stamen, Esri…
 
 Les contributions sont les bienvenues !
 
-1. **Fork** le projet
+1. **Fork** le projet : [github.com/gunout/meteo-reunion/fork](https://github.com/gunout/meteo-reunion/fork)
 2. **Créer** une branche (`git checkout -b feature/nouvelle-fonctionnalite`)
 3. **Commit** (`git commit -m 'Ajout nouvelle fonctionnalité'`)
 4. **Push** (`git push origin feature/nouvelle-fonctionnalite`)
@@ -316,12 +388,12 @@ Les contributions sont les bienvenues !
 
 ## 📄 Licence
 
-Ce projet est sous licence **MIT** — voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence **MIT** — voir le fichier [LICENSE](https://github.com/gunout/meteo-reunion/blob/main/LICENSE) pour plus de détails.
 
 ```
 MIT License
 
-Copyright (c) 2025 Météo La Réunion Dashboard
+Copyright (c) 2025-2026 Gunout
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -355,11 +427,23 @@ SOFTWARE.
 
 ---
 
+## 📞 Contact
+
+- **GitHub** : [@gunout](https://github.com/gunout)
+- **Issues** : [github.com/gunout/meteo-reunion/issues](https://github.com/gunout/meteo-reunion/issues)
+- **Discussions** : [github.com/gunout/meteo-reunion/discussions](https://github.com/gunout/meteo-reunion/discussions)
+
+---
+
 <div align="center">
 
 **🌴 Fait avec ❤️ pour La Réunion 🌴**
 
 [⬆ Retour en haut](#-météo-la-réunion--dashboard-temps-réel)
+
+### 🇫🇷 Gunout · 2026
+
+© 2026 **Gunout** — Tous droits réservés.
 
 </div>
 
